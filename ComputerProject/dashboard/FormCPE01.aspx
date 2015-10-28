@@ -22,7 +22,7 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link font-1d8 font-thai" href=""> <span class="material-icons mdl-badge" data-badge="3">account_box</span></a>
+        <a class="mdl-navigation__link font-1d8 font-thai" href="main.aspx"> <span class="material-icons mdl-badge" data-badge="3">account_box</span></a>
         <a class="mdl-navigation__link font-1d8 font-thai"><!-- Right aligned menu below button -->
                             <button id="demo-menu-lower-right"
                                     class="mdl-button mdl-js-button mdl-button--icon">
@@ -33,7 +33,7 @@
                             for="demo-menu-lower-right">
                           <li  disabled class="mdl-menu__item  font-1d8">วิธีใช้งาน</li>
                           <li disabled class="mdl-menu__item  font-1d8">ติดต่อเรา</li>
-                          <li  class="mdl-menu__item  font-1d8">ออกจากระบบ</li>
+                          <li  class="mdl-menu__item  font-1d8"><a href="clear.aspx" >ออกจากระบบ</li></a>
                           
                         </ul>
 
@@ -44,8 +44,8 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title font-1d8 font-thai" style="background-color:#FF5722;color:#FFFFFF" align="center">ฟอร์มโครงงาน</span>
     <nav class="mdl-navigation" align="center">
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE01</a>
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE02</a>
+      <a class="mdl-navigation__link font-1d8 font-thai" href="FormCPE01.aspx">CPE01</a>
+      <a class="mdl-navigation__link font-1d8 font-thai" href="FormCPE02.aspx">CPE02</a>
       <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE03</a>
       <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE04</a>
       <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE05</a>

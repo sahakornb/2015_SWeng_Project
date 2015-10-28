@@ -33,7 +33,7 @@
                             for="demo-menu-lower-right">
                           <li  disabled class="mdl-menu__item  font-1d8">วิธีใช้งาน</li>
                           <li disabled class="mdl-menu__item  font-1d8">ติดต่อเรา</li>
-                          <li  class="mdl-menu__item  font-1d8">ออกจากระบบ</li>
+                          <li  class="mdl-menu__item  font-1d8"><a href="clear.aspx" >ออกจากระบบ</a></li>
                           
                         </ul>
 
@@ -44,8 +44,8 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title font-1d8 font-thai" style="background-color:#FF5722;color:#FFFFFF" align="center">ฟอร์มโครงงาน</span>
     <nav class="mdl-navigation" align="center">
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE01</a>
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE02</a>
+      <a class="mdl-navigation__link font-1d8 font-thai" href="FormCPE01.aspx">CPE01</a>
+      <a class="mdl-navigation__link font-1d8 font-thai" href="FormCPE02.aspx">CPE02</a>
       <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE03</a>
       <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE04</a>
       <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE05</a>
@@ -100,8 +100,8 @@
                          <div  class="mdl-cell mdl-cell--4-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
                              
                                   <asp:Button class="mdl-button mdl-js-button mdl-button--accent" ID="Button1" runat="server" Text="รายละเอียด" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ID="Button2" runat="server" Text="อนุมัติ" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="Button3" runat="server" Text="ไม่อนุมัติ" />
+                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ID="Button2" runat="server" Text="อนุมัติ" OnClick="Button2_Click" />
+                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="Button3" runat="server" Text="ไม่อนุมัติ" OnClick="Button3_Click" />
                          
                          </div>
                          </div>
@@ -263,6 +263,17 @@
                  <div style="padding:0.1vw;background-color:#FF9800">
                              <h5 class="font-thai">Activity</h5>
                       </div>
+
+                 <input  class="mdl-slider mdl-js-slider" type="range"
+  min="0" max="100" value="25" tabindex="0"/>
+                 <div class="mdl-grid">
+                      <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet">CPE01</div>
+                      <div class="mdl-cell mdl-cell--2-col mdl-cell--6-col-tablet">CPE02</div>
+                      <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-phone">CPE03</div>
+                     <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet">CPE04</div>
+                      <div class="mdl-cell mdl-cell--2-col mdl-cell--6-col-tablet">CPE05</div>
+                      <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-phone">CPE06</div>
+                    </div>
               </div>
                <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-phone  white-shadow" align ="center">
                      <div style="padding:0.1vw;background-color:#FF9800">

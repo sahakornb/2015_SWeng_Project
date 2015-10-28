@@ -63,13 +63,13 @@
                        <br>
             
                               <div class="mdl-textfield mdl-js-textfield">
-                             <asp:TextBox  class="mdl-textfield__input" type="text" id="pass"  runat="server"></asp:TextBox>
+                             <asp:TextBox  class="mdl-textfield__input" type="password" id="pass"  runat="server"></asp:TextBox>
                               <label class="mdl-textfield__label" for="pass">กรุณากรอก Password</label>
                                    
                            </div> <br>
                       
                     <!-- Primary-colored flat button -->
-                <asp:Button ID="submit_login" runat="server" Text="ลงชื่อเข้าใช้งาน" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
+                <asp:Button ID="submit_login" runat="server" Text="ลงชื่อเข้าใช้งาน" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" OnClick="submit_login_Click" />
                                     
                             </button>
                     

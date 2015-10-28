@@ -22,7 +22,7 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link font-1d8 font-thai" href=""> <span class="material-icons mdl-badge" data-badge="3">account_box</span></a>
+        <a class="mdl-navigation__link font-1d8 font-thai" href="main.aspx"> <span class="material-icons mdl-badge" data-badge="3">account_box</span></a>
         <a class="mdl-navigation__link font-1d8 font-thai"><!-- Right aligned menu below button -->
                             <button id="demo-menu-lower-right"
                                     class="mdl-button mdl-js-button mdl-button--icon">
@@ -33,7 +33,7 @@
                             for="demo-menu-lower-right">
                           <li  disabled class="mdl-menu__item  font-1d8">วิธีใช้งาน</li>
                           <li disabled class="mdl-menu__item  font-1d8">ติดต่อเรา</li>
-                          <li  class="mdl-menu__item  font-1d8">ออกจากระบบ</li>
+                          <li  class="mdl-menu__item  font-1d8"><a href="clear.aspx" >ออกจากระบบ</li></a>
                           
                         </ul>
 
@@ -44,8 +44,8 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title font-1d8 font-thai" style="background-color:#FF5722;color:#FFFFFF" align="center">ฟอร์มโครงงาน</span>
     <nav class="mdl-navigation" align="center">
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE01</a>
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE02</a>
+      <a class="mdl-navigation__link font-1d8 font-thai" href="FormCPE01.aspx">CPE01</a>
+      <a class="mdl-navigation__link font-1d8 font-thai" href="FormCPE02.aspx">CPE02</a>
       <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE03</a>
       <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE04</a>
       <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE05</a>
@@ -85,6 +85,7 @@
                          <div style="border:1px solid #D7CCC8" class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
                               <div class="mdl-textfield mdl-js-textfield ">
                              <asp:Label  class="font-thai font-2d0" ID="name_project" runat="server" Text="ชื่อโครงงาน"></asp:Label>
+
                           </div>
                          </div>
                          </div>
@@ -116,7 +117,7 @@
                                   </div>
                            <br />
                               <div class="mdl-textfield mdl-js-textfield">
-                             <asp:TextBox  class="mdl-textfield__input" type="text" TextMode="multiline" Rows="2" id="TextBox1"  runat="server"></asp:TextBox>
+                             <asp:TextBox  class="mdl-textfield__input" type="text" TextMode="multiline" Rows="2" id="Topic"  runat="server"></asp:TextBox>
                               <label class="mdl-textfield__label" for="TextBox1">ประเด็น/หัวข้อ/งานที่รับมอบหมาย</label>
                                    
                            </div>
@@ -132,7 +133,7 @@
                                <div style="border:1px solid #D7CCC8" class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
                                                            
                                         <div class="mdl-textfield mdl-js-textfield">
-                             <asp:TextBox  class="mdl-textfield__input" type="text" TextMode="multiline" Rows="3" id="TextBox2"  runat="server"></asp:TextBox>
+                             <asp:TextBox  class="mdl-textfield__input" type="text" TextMode="multiline" Rows="3" id="Progress"  runat="server"></asp:TextBox>
                               <label class="mdl-textfield__label" for="TextBox2">ข้อสรุป/ความคืบหน้า</label>
                                    
                            </div>
@@ -141,7 +142,7 @@
                          </div>
                                  <div style="border:1px solid #D7CCC8" class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
                                             <div class="mdl-textfield mdl-js-textfield">
-                             <asp:TextBox  class="mdl-textfield__input" type="text" TextMode="multiline" Rows="3" id="TextBox3"  runat="server"></asp:TextBox>
+                             <asp:TextBox  class="mdl-textfield__input" type="text" TextMode="multiline" Rows="3" id="Remark"  runat="server"></asp:TextBox>
                               <label class="mdl-textfield__label" for="TextBox3">หมายเหตุ</label>
                                    
                            </div>
@@ -159,7 +160,7 @@
                          <div  class="mdl-cell mdl-cell--2-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
                          <!-- Expandable Textfield -->
                     
-                                <asp:Button ID="save" runat="server" Text="บันทึก" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
+                                <asp:Button ID="save" runat="server" Text="บันทึก" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" OnClick="save_Click" />
                                  
                             </button>
                      
@@ -168,7 +169,7 @@
                          <div class="mdl-cell mdl-cell--2-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
                        
                          
-                             <asp:Button ID="save_send" runat="server" Text="บันทึกและส่ง" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
+                             <asp:Button ID="save_send" runat="server" Text="บันทึกและส่ง" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" OnClick="save_send_Click" />
                                     
                             </button>
                          

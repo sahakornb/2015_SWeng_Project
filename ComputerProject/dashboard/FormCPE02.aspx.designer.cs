@@ -58,31 +58,31 @@ namespace ComputerProject.dashboard {
         protected global::System.Web.UI.WebControls.Label date_text;
         
         /// <summary>
-        /// TextBox1 control.
+        /// Topic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox Topic;
         
         /// <summary>
-        /// TextBox2 control.
+        /// Progress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox Progress;
         
         /// <summary>
-        /// TextBox3 control.
+        /// Remark control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox Remark;
         
         /// <summary>
         /// save control.
