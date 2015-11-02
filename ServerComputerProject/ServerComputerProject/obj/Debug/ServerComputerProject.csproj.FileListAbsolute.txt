@@ -1,0 +1,8 @@
+F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\obj\Debug\ServerComputerProject.csprojResolveAssemblyReference.cache
+F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\bin\ServerComputerProject.dll.config
+F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\bin\ServerComputerProject.dll
+F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\bin\ServerComputerProject.pdb
+F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\bin\Newtonsoft.Json.dll
+F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\bin\Newtonsoft.Json.xml
+F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\obj\Debug\ServerComputerProject.dll
+F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\obj\Debug\ServerComputerProject.pdb
