@@ -15,32 +15,46 @@ namespace ServerComputerProject
         [OperationContract]
         void DoWork();
 
-        //--http://localhost:55713/ServiceSave.svc/login?username=Fai&password=asdf
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "saveCPE01?fac={fac}&Th={projectTh}&Eng={projectEng}&scope={scope}&pers1={pers1}&pers2={pers2}&pers3={pers3}&advis1={advis1}&advis2={advis2}&commit={commit}")]
-        string saveCPE01(bool fac,string projectTh, string projectEng, string scope ,string pers1, string pers2, string pers3, string advis1, string advis2, string commit);
-
-        //--http://localhost:55713/ServiceSave.svc/saveCPE01?Th=ทดสอบ&Eng=ff&scope=few&pers1=55367854&pers2=&pers3=&advis1=T0000013&advis2=&commit=T0000023
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "login?username={user}&password={pass}")]
-        string login(string user, string pass);
-
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "updateState?projectID={project}&state={state}&status={status}")]
-        string updateState(string project, string state, string status);
-
-        //--http://localhost:55713/ServiceSave.svc/getProject?pers=55367854
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getProject?pers={pers}")]
-        string getProjectID(string pers);
-
         //--http://localhost:55713/ServiceSave.svc/saveCPE02?fac=false&project=1004&date=10/28/2015%201:09:07%20AM&topic=meet&progress=few&remark=bre
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "saveCPE02?fac={fac}&project={project}&userID={userID}&date={date}&topic={topic}&progress={progress}&remark={remark}")]
-        string saveCPE02(bool fac, string project, string userID,string date, string topic, string progress, string remark);
+        string saveCPE02(bool fac, string project, string userID, string date, string topic, string progress, string remark);
 
+    
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "updateState?project_temp={project_temp}&state={state}&status={status}")]
+        string updateState(string project_temp, string state, string status);
+
+        //--http://localhost:55713/ServiceSave.svc/getProject?pers=55367854
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getProject?person_id={person_id}")]
+        string getProjectID(string person_id);
+        
         //--http://localhost:55713/ServiceSave.svc/getRequest?pers=T0000013
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getRequest?pers={pers}")]
-        string getRequest(string pers);
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getRequest?person_id={person_id}")]
+        string getRequest(string person_id);
 
         //--http://localhost:55713/ServiceSave.svc/approveProject?projectID=1004&state=2&status=2
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "approveProject?projectID={project}&state={state}&status={status}")]
-        string approveProject(string project, string state, string status);
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "approveProject?project_temp={project_temp}&state={state}&status={status}")]
+        string approveProject(string project_temp, string state, string status);
+        
+     
 
+        //========================== Login =============================//
+        // Login Example : -http://localhost:55713/ServiceSave.svc/login?username=Fai&password=asdf
+
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "login?username={username}&password={password}")]
+        string login(string username, string password);
+
+        //========================== save_form_one =============================//
+        //--http://localhost:55713/ServiceSave.svc/sen_form_one?project_name_th=ทดสอบ&project_name_en=ff&scope=few&member_one=55367854&member_two=&member_three=&project_adviser=T0000013&project_co_adviser=&project_committee=T0000023&send_approve=false
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "sen_form_one?project_name_th={project_name_th}&project_name_en={project_name_en}" +
+        "&member_one={member_one}&member_two={member_two}&member_three={member_three}&project_adviser={project_adviser}&project_co_adviser={project_co_adviser}" +
+        "&project_committee={project_committee}&send_approve={send_approve}")]
+
+        string send_form_one(string project_name_th, string project_name_en, string member_one, string member_two, string member_three,
+                             string project_adviser, string project_co_adviser, string project_committee, bool send_approve);
+
+        //========================== Login =============================//
+        // Login Example : -http://localhost:55713/ServiceSave.svc/student_sync?person_id=Fai&type_person=asdf
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "student_sync?person_id={person_id}&type_person={type_person}")]
+        string student_sync(string person_id, int type_person);
     }
 }

@@ -6,3 +6,11 @@ F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\bin\Newtonso
 F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\bin\Newtonsoft.Json.xml
 F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\obj\Debug\ServerComputerProject.dll
 F:\aWork4\SeniorProject\ServerComputerProject\ServerComputerProject\obj\Debug\ServerComputerProject.pdb
+C:\Users\NFai\Documents\GitHub\2015_SWeng_Project\ServerComputerProject\ServerComputerProject\obj\Debug\ServerComputerProject.csprojResolveAssemblyReference.cache
+C:\Users\NFai\Documents\GitHub\2015_SWeng_Project\ServerComputerProject\ServerComputerProject\obj\Debug\ServerComputerProject.dll
+C:\Users\NFai\Documents\GitHub\2015_SWeng_Project\ServerComputerProject\ServerComputerProject\obj\Debug\ServerComputerProject.pdb
+C:\Users\NFai\Documents\GitHub\2015_SWeng_Project\ServerComputerProject\ServerComputerProject\bin\ServerComputerProject.dll.config
+C:\Users\NFai\Documents\GitHub\2015_SWeng_Project\ServerComputerProject\ServerComputerProject\bin\ServerComputerProject.dll
+C:\Users\NFai\Documents\GitHub\2015_SWeng_Project\ServerComputerProject\ServerComputerProject\bin\ServerComputerProject.pdb
+C:\Users\NFai\Documents\GitHub\2015_SWeng_Project\ServerComputerProject\ServerComputerProject\bin\Newtonsoft.Json.dll
+C:\Users\NFai\Documents\GitHub\2015_SWeng_Project\ServerComputerProject\ServerComputerProject\bin\Newtonsoft.Json.xml
