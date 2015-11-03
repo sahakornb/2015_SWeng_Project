@@ -19,8 +19,11 @@ namespace ComputerProject.website
         public class ResponseMsg
         {
             public int code { get; set; }
-            public string msg { get; set; }
             public string presID { get; set; }
+            public string msg { get; set; }
+            public string first_name { get; set; }
+            public string last_name { get; set; }
+       
             public string typeperson { get; set; }
         }
 
@@ -64,7 +67,8 @@ namespace ComputerProject.website
                 Session["username"] = username.Text;
                 Session["typeperson"] = _jsonRecieveMes2.typeperson;
                 Session["userID"] = _jsonRecieveMes2.presID;
-                
+                Session["first_name"] = _jsonRecieveMes2.first_name;
+                Session["last_name"] = _jsonRecieveMes2.last_name;
                 Response.Redirect("http://localhost:54520/dashboard/main.aspx");
             }
             else 

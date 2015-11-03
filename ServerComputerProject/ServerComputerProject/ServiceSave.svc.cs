@@ -28,10 +28,10 @@ namespace ServerComputerProject
             public int code { get; set; }
             public string msg { get; set; }
             public string presID { get; set; }
+            public string first_name { get; set; }
+            public string last_name { get; set; }
             public string typeperson { get; set; }
-        }
-
-       
+        }   
 
         public class Project
         {
@@ -65,6 +65,32 @@ namespace ServerComputerProject
             public int state { get; set; }
         }
 
+        public class ProjectRequest
+        {
+            public string project_id { get; set; }
+            public string project_title { get; set; }
+            public string date { get; set; }
+        }
+
+        public class ResponseRequestList
+        {
+            public int code { get; set; }
+            public string msg { get; set; }
+            public List<ProjectRequest> request { get; set; }
+        }
+
+        public class ProjectOwner
+        {
+            public string project { get; set; }
+        }
+
+        public class ResponseProjectList
+        {
+            public int code { get; set; }
+            public string msg { get; set; }
+            public List<ProjectOwner> projectlist { get; set; }
+        }
+
         public class ResponseMsg
         {
             public int code { get; set; }
@@ -88,35 +114,34 @@ namespace ServerComputerProject
             SqlConnection con = new SqlConnection(constr);
             con.Open();
 
-            string sqlLogin = "SELECT PersID,typeOfPers  FROM person WHERE Username = '" + username + "' AND Password = '" + hash_password + "'";
+            string sqlLogin = "SELECT PersID,Fname,Lname,typeOfPers  FROM person WHERE Username = '" + username + "' AND Password = '" + hash_password + "'";
             SqlCommand qrLogin = new SqlCommand(sqlLogin, con);
             SqlDataReader reader = qrLogin.ExecuteReader();
 
             ResponseLogin m = new ResponseLogin();
 
-            string type = "", PersID = "";
-
             if (reader.Read())
             {
                 try
                 {
-                    PersID = reader["PersID"].ToString();
-                    type = reader["typeOfPers"].ToString();                
+                    m.presID = reader["PersID"].ToString();
+                    m.typeperson = reader["typeOfPers"].ToString();
+                    m.first_name = reader["Fname"].ToString();
+                    m.last_name = reader["Lname"].ToString();
                 }
                 catch
                 {
-
+                    m.code = 9;
+                    m.msg = "Database Error";
                 }
             }
 
             reader.Close();
 
-            if (type != "")
+            if (m.typeperson != "")
             {
                 m.code = 0;
                 m.msg = "OK";                
-                m.presID = PersID;
-                m.typeperson = type;
             }
             else 
             {
@@ -183,8 +208,10 @@ namespace ServerComputerProject
             return JsonConvert.SerializeObject(m);
         }
 
-        private string getProject(string project)
-        {
+        public string getProject_sync(string person_id)
+        {            
+            string project = getProjectID(person_id);
+
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
             con.Open();
@@ -210,10 +237,32 @@ namespace ServerComputerProject
             p.projectID = project;
             p.projectTh = name[0];
             p.projectEng = name[1];
-
+            
             return JsonConvert.SerializeObject(p);
         }
 
+        public string getNameProject(string project)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+
+            string sqlproject = "SELECT ProjName_TH FROM project WHERE ProjID = '" + project + "'";
+            SqlCommand qrproject = new SqlCommand(sqlproject, con);
+            SqlDataReader reader = qrproject.ExecuteReader();
+
+            string name = "";
+
+            if (reader.Read())
+            {
+                name = reader["ProjName_TH"].ToString();
+            }
+            reader.Close();
+            con.Close();
+
+            return name;
+        }
+        
         public string getProjectID(string person_id)
         {
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
@@ -233,10 +282,11 @@ namespace ServerComputerProject
             }
             reader.Close();
             con.Close();
-            //**** getProject(result) **************
+
             return result; 
         }
 
+        //-------------create project ID-----------------
         private string getID(string skema ,string table)
         {
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
@@ -267,7 +317,7 @@ namespace ServerComputerProject
             return result.ToString();
         }
 
-        public string saveCPE02(bool fac, string project,string userID, string date, string topic, string progress, string remark)
+        public string send_form_two(bool fac, string project, string userID, string date, string topic, string progress, string remark)
         {
 
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
@@ -361,7 +411,8 @@ namespace ServerComputerProject
             }
         }
 
-        //complete
+        //complete old
+        /*
         public string getRequest(string person_id)
         {
             Request q = new Request();
@@ -396,8 +447,8 @@ namespace ServerComputerProject
             }
 
             return JsonConvert.SerializeObject(q);
-        }
-        
+        }*/
+       
         //complete
         public string approveProject(string project_temp, string state, string status)
         {
@@ -483,7 +534,7 @@ namespace ServerComputerProject
 
                     project_id = getProjectID(person_id);
 
-                    string sqlproject = "SELECT * FROM ProjectOperations WHERE ProjID = '" + project_id + "'";
+                    string sqlproject = "SELECT Subject,Date FROM ProjectOperations WHERE ProjID = '" + project_id + "'";
 
                     SqlCommand qrproject = new SqlCommand(sqlproject, con);
                     SqlDataReader reader = qrproject.ExecuteReader();
@@ -492,7 +543,7 @@ namespace ServerComputerProject
 
                     while(reader.Read())
                     {
-                       s = new ProjectLogs();
+                        s = new ProjectLogs();
                         s.logs_topic = reader["Subject"].ToString();
                         s.date = reader["Date"].ToString();
                         q.Logs.Add(s);
@@ -580,95 +631,42 @@ namespace ServerComputerProject
 
         public string send_form_one(string project_name_th, string project_name_en, string member_one, string member_two, string member_three,
                              string project_adviser, string project_co_adviser, string project_committee, bool send_approve)
-        {   ResponseMsg m = new ResponseMsg();
+        {   
+            ResponseMsg m = new ResponseMsg();
             try
             {
                 string member = countMember(member_one, member_two, member_three);
                 
                 if (saveProject(project_name_th, project_name_en, "null", member))
                 {
-                   //{
                     if (createRelation(project_id, member_one, "0"))
-                        {
-                            m.code = 0;
-                            m.msg = "OK";
-                        }
+                    {
+                        m.code = 0;
+                        m.msg = "OK";
+                    }
                     else
+                    {
+                        m.code = 9;
+                        m.msg = "Database Error";
+                    }
+
+
+                    if (int.Parse(member) == 2)
+                    {
+                        if (createRelation(project_id, member_two, "0"))
                         {
-                            m.code = 9;
-                            m.msg = "Database Error";
-                        }
-
-                    //}
-
-                    //{
-                        if (int.Parse(member) == 2)
-                        {
-                            if (createRelation(project_id, member_two, "0"))
-                            {
-                                m.code = 0;
-                                m.msg = "OK";
-                            }
-                            else
-                            {
-                                m.code = 9;
-                                m.msg = "Database Error";
-                            }
-                
-                        }
-
-                        else if (int.Parse(member) == 3)
-                        {
-                            if (createRelation(project_id, member_two, "0") && createRelation(project_id, member_three, "0"))
-                            {
-                                m.code = 0;
-                                m.msg = "OK";
-                            }
-                            else
-                            {
-                                m.code = 9;
-                                m.msg = "Database Error";
-                            }
-
-                        }
-                        //}
-
-                        //{
-                            if(createRelation(project_id, project_adviser, "1"))
-                            {
-                                m.code = 0;
-                                m.msg = "OK";
-                            }
-                            else
-                            {
-                                m.code = 9;
-                                m.msg = "Database Error";
-                            }
-                            //}
-
-                            //{
-                        if (project_co_adviser != "")
-                        {
-                            if (createRelation(project_id, project_co_adviser, "2"))
-                            {
-                                m.code = 0;
-                                m.msg = "OK";
-                            }
-                            else
-                            {
-                                m.code = 9;
-                                m.msg = "Database Error";
-                            }
+                            m.code = 0;
+                            m.msg = "OK";
                         }
                         else
                         {
-                            m.code = 11;
-                            m.msg = "Parameter Wrong";
-                        }
-                        //}
-
-                        //{
-                    if (createRelation(project_id, project_committee, "3"))
+                            m.code = 9;
+                            m.msg = "Database Error";
+                        }                
+                    }
+                    else if (int.Parse(member) == 3)
+                    {
+                        if (createRelation(project_id, member_two, "0") && createRelation(project_id, member_three, "0"))
                         {
                             m.code = 0;
                             m.msg = "OK";
@@ -679,32 +677,75 @@ namespace ServerComputerProject
                             m.msg = "Database Error";
                         }
 
-                    //}
-                            string status = "";
-                            if (send_approve != null)
-                            {
-                                if (!send_approve)
-                                {
-                                    status = "1";
-                                }
-                                else
-                                {
-                                    status = "2";
-                                }
-                                m.code = 0;
-                                m.msg = "OK";
-                            }
-                            else
-                            {
-                                m.code = 11;
-                                m.msg = "Parameter Wrong";
-                            }
-                            dynamic update = JsonConvert.DeserializeObject(updateState(project_id, "1", status));
-                            dynamic decode_update = JsonConvert.DeserializeObject<ResponseMsg>(update);
+                    }
 
-                            m.code = decode_update.code;
-                            m.msg = decode_update.msg;
-                            m.value = decode_update.value;
+                    if(createRelation(project_id, project_adviser, "1"))
+                    {
+                        m.code = 0;
+                        m.msg = "OK";
+                    }
+                    else
+                    {
+                        m.code = 9;
+                        m.msg = "Database Error";
+                    }
+
+                    if (project_co_adviser != "")
+                    {
+                        if (createRelation(project_id, project_co_adviser, "2"))
+                        {
+                            m.code = 0;
+                            m.msg = "OK";
+                        }
+                        else
+                        {
+                            m.code = 9;
+                            m.msg = "Database Error";
+                        }
+                    }
+                    else
+                    {
+                        m.code = 11;
+                        m.msg = "Parameter Wrong";
+                    }
+
+                    if (createRelation(project_id, project_committee, "3"))
+                    {
+                        m.code = 0;
+                        m.msg = "OK";
+                    }
+                    else
+                    {
+                        m.code = 9;
+                        m.msg = "Database Error";
+                    }
+
+                    string status = "";
+                    if (send_approve != null)
+                    {
+                        if (!send_approve)
+                        {
+                            status = "1";
+                        }
+                        else
+                        {
+                            status = "2";
+                        }
+                        m.code = 0;
+                        m.msg = "OK";
+                    }
+                    else
+                    {
+                        m.code = 11;
+                        m.msg = "Parameter Wrong";
+                    }
+
+                    dynamic update = JsonConvert.DeserializeObject(updateState(project_id, "1", status));
+                    dynamic decode_update = JsonConvert.DeserializeObject<ResponseMsg>(update);
+
+                    m.code = decode_update.code;
+                    m.msg = decode_update.msg;
+                    m.value = decode_update.value;
                 }
                 else
                 {
@@ -717,6 +758,7 @@ namespace ServerComputerProject
                 m.code = 12;
                 m.msg = "Can't to save form to system";
             }
+
             return JsonConvert.SerializeObject(m);
         }
 
@@ -822,5 +864,120 @@ namespace ServerComputerProject
             }
         }
     
+        public string teacherSync_request(string person_id, int type_person)
+        {
+
+            ResponseRequestList r = new ResponseRequestList();
+            ProjectRequest p = new ProjectRequest();
+
+            if (type_person == 0)
+            {
+                r.code = 11;
+                r.msg = "Parameter Wrong";
+            }
+            else
+            {
+                try
+                {
+                    string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+                    SqlConnection con = new SqlConnection(constr);
+                    con.Open();
+
+                    //project_id = getProjectID(person_id);
+
+                    string sqlproject = "SELECT * FROM Request_Title WHERE AcceptanceID = '" + person_id + "'";
+
+                    SqlCommand qrproject = new SqlCommand(sqlproject, con);
+                    SqlDataReader reader = qrproject.ExecuteReader();
+
+                    r.request = new List<ProjectRequest>();
+
+                    while (reader.Read())
+                    {
+                        p = new ProjectRequest();
+
+                        p.project_id = reader["ProjID"].ToString();
+                        // p.project_id = getNameProject(reader["ProjID"].ToString());
+                        p.project_title = getRequest(reader["ReqID"].ToString());
+                        p.date = reader["Date"].ToString();
+                        r.request.Add(p);
+                    }
+
+                    reader.Close();
+                    con.Close();
+
+                    r.code = 0;
+                    r.msg = "OK";
+                }
+                catch
+                {
+                    r.code = 9;
+                    r.msg = "Database Error";
+                }                             
+            }
+            return JsonConvert.SerializeObject(r); 
+        }
+        
+        public string getRequest(string request_id)
+        {
+            string temp = "" ;
+            try
+            {
+                string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+                SqlConnection con = new SqlConnection(constr);
+                con.Open();
+
+                string sqlRequest = "SELECT * FROM Request WHERE ReqID = '" + request_id + "'";
+
+                SqlCommand qrRequest = new SqlCommand(sqlRequest, con);
+                SqlDataReader reader = qrRequest.ExecuteReader();
+                                
+                if (reader.Read())
+                {
+                    temp = reader["Request"].ToString();
+                }
+                reader.Close();
+                con.Close();
+
+                return temp;
+            }
+            catch
+            {
+                return "false";
+            }                
+        }
+
+        public string teacherSync_project(string person_id, int type_person)
+        {
+            ResponseProjectList r = new ResponseProjectList();
+            ProjectOwner p = new ProjectOwner();
+            if (type_person == 0)
+            {
+                r.code = 11;
+                r.msg = "Parameter Wrong";
+            }
+            else
+            {
+                string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+                SqlConnection con = new SqlConnection(constr);
+                con.Open();
+
+                string sqlRequest = "SELECT * FROM Relation WHERE PersID = '" + person_id + "' AND Status_ID = '1' OR Status_ID = '2'";
+
+                SqlCommand qrRequest = new SqlCommand(sqlRequest, con);
+                SqlDataReader reader = qrRequest.ExecuteReader();
+                r.projectlist = new List<ProjectOwner>();
+                while (reader.Read())
+                {
+                    p = new ProjectOwner();
+
+                    p.project = getNameProject(reader["ProjID"].ToString());
+                    r.projectlist.Add(p);
+                }
+                reader.Close();
+                con.Close();
+            }
+            return JsonConvert.SerializeObject(r); 
+        }
     }
 }

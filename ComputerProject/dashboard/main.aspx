@@ -28,13 +28,13 @@
                                     class="mdl-button mdl-js-button mdl-button--icon">
                               <i class="material-icons">more_vert</i>
                             </button>
+                         
 
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                             for="demo-menu-lower-right">
                           <li  disabled class="mdl-menu__item  font-1d8">วิธีใช้งาน</li>
                           <li disabled class="mdl-menu__item  font-1d8">ติดต่อเรา</li>
                           <li  class="mdl-menu__item  font-1d8"><a href="clear.aspx" >ออกจากระบบ</a></li>
-                          
                         </ul>
 
         </a>
@@ -44,13 +44,9 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title font-1d8 font-thai" style="background-color:#FF5722;color:#FFFFFF" align="center">ฟอร์มโครงงาน</span>
     <nav class="mdl-navigation" align="center">
-      <a class="mdl-navigation__link font-1d8 font-thai" href="FormCPE01.aspx">CPE01</a>
-      <a class="mdl-navigation__link font-1d8 font-thai" href="FormCPE02.aspx">CPE02</a>
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE03</a>
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE04</a>
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE05</a>
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE06</a>
-      <a class="mdl-navigation__link font-1d8 font-thai" href="">CPE07</a>
+      <a class="mdl-navigation__link font-1d8 font-thai" href="">วิธีการใช้งาน</a>
+      <a class="mdl-navigation__link font-1d8 font-thai" href="">ติดต่อเรา</a>
+      <a class="mdl-navigation__link font-1d8 font-thai" href="clear.aspx">ออกจากระบบ</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
@@ -83,150 +79,10 @@
                          </div>
                          </div>
                  <!-- Recent Request 1-->
-                 <asp:Panel ID="req_1" runat="server">
-                     <div class="mdl-grid" >
-                         <div   class="mdl-cell mdl-cell--2-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                         
-                              <asp:Label  class="font-thai font-1d8" ID="Label1" runat="server" Text="CPE5654"></asp:Label>
-                          
-                         </div>
-                       
-                         <div   class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                          
-                              <asp:Label  class="font-thai font-1d8" ID="Label3" runat="server" Text="แบบขอเสนอชื่อโครงงาน"></asp:Label>
-                         
-                         </div>
-
-                         <div  class="mdl-cell mdl-cell--4-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                             
-                                  <asp:Button class="mdl-button mdl-js-button mdl-button--accent" ID="Button1" runat="server" Text="รายละเอียด" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ID="Button2" runat="server" Text="อนุมัติ" OnClick="Button2_Click" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="Button3" runat="server" Text="ไม่อนุมัติ" OnClick="Button3_Click" />
-                         
-                         </div>
-                         </div>
-                     </asp:Panel>
-                            <!-- Recent Request 2-->
-                   <asp:Panel ID="req_2" runat="server">
-                     <div class="mdl-grid" >
-                         <div   class="mdl-cell mdl-cell--2-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                         
-                              <asp:Label  class="font-thai font-1d8" ID="Label4" runat="server" Text="CPE5654"></asp:Label>
-                          
-                         </div>
-                       
-                         <div   class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                          
-                              <asp:Label  class="font-thai font-1d8" ID="Label5" runat="server" Text="แบบขอเสนอชื่อโครงงาน"></asp:Label>
-                         
-                         </div>
-
-                         <div  class="mdl-cell mdl-cell--4-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                             
-                                  <asp:Button class="mdl-button mdl-js-button mdl-button--accent" ID="Button4" runat="server" Text="รายละเอียด" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ID="Button5" runat="server" Text="อนุมัติ" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="Button6" runat="server" Text="ไม่อนุมัติ" />
-                         
-                         </div>
-                         </div>
-                       </asp:Panel>
-                            <!-- Recent Request 3-->
-                <asp:Panel ID="req_3" runat="server">
-                     <div class="mdl-grid" >
-                         
-                         <div   class="mdl-cell mdl-cell--2-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                         
-                              <asp:Label  class="font-thai font-1d8" ID="Label6" runat="server" Text="CPE5654"></asp:Label>
-                          
-                         </div>
-                       
-                         <div   class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                          
-                              <asp:Label  class="font-thai font-1d8" ID="Label7" runat="server" Text="แบบขอเสนอชื่อโครงงาน"></asp:Label>
-                         
-                         </div>
-
-                         <div  class="mdl-cell mdl-cell--4-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                             
-                                  <asp:Button class="mdl-button mdl-js-button mdl-button--accent" ID="Button7" runat="server" Text="รายละเอียด" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ID="Button8" runat="server" Text="อนุมัติ" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="Button9" runat="server" Text="ไม่อนุมัติ" />
-                         
-                         </div>
-                         </div>
-                  </asp:Panel>
-                            <!-- Recent Request 4-->
-              <asp:Panel ID="req_4" runat="server">
-                     <div class="mdl-grid" >
-                         <div   class="mdl-cell mdl-cell--2-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                         
-                              <asp:Label  class="font-thai font-1d8" ID="Label8" runat="server" Text="CPE5654"></asp:Label>
-                          
-                         </div>
-                       
-                         <div   class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                          
-                              <asp:Label  class="font-thai font-1d8" ID="Label9" runat="server" Text="แบบขอเสนอชื่อโครงงาน"></asp:Label>
-                         
-                         </div>
-
-                         <div  class="mdl-cell mdl-cell--4-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                             
-                                  <asp:Button class="mdl-button mdl-js-button mdl-button--accent" ID="Button10" runat="server" Text="รายละเอียด" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ID="Button11" runat="server" Text="อนุมัติ" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="Button12" runat="server" Text="ไม่อนุมัติ" />
-                         
-                         </div>
-                         </div>
-            </asp:Panel>
-                            <!-- Recent Request 5-->
-            <asp:Panel ID="req_5" runat="server">
-                     <div class="mdl-grid" >
-                         <div   class="mdl-cell mdl-cell--2-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                         
-                              <asp:Label  class="font-thai font-1d8" ID="Label10" runat="server" Text="CPE5654"></asp:Label>
-                          
-                         </div>
-                       
-                         <div   class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                          
-                              <asp:Label  class="font-thai font-1d8" ID="Label11" runat="server" Text="แบบขอเสนอชื่อโครงงาน"></asp:Label>
-                         
-                         </div>
-
-                         <div  class="mdl-cell mdl-cell--4-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                             
-                                  <asp:Button class="mdl-button mdl-js-button mdl-button--accent" ID="Button13" runat="server" Text="รายละเอียด" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ID="Button14" runat="server" Text="อนุมัติ" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="Button15" runat="server" Text="ไม่อนุมัติ" />
-                         
-                         </div>
-                         </div>
-             </asp:Panel>
-                            <!-- Recent Request 6-->
-            <asp:Panel ID="req_6" runat="server">
-                     <div class="mdl-grid" >
-                         <div   class="mdl-cell mdl-cell--2-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                         
-                              <asp:Label  class="font-thai font-1d8" ID="Label12" runat="server" Text="CPE5654"></asp:Label>
-                          
-                         </div>
-                       
-                         <div   class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                          
-                              <asp:Label  class="font-thai font-1d8" ID="Label13" runat="server" Text="แบบขอเสนอชื่อโครงงาน"></asp:Label>
-                         
-                         </div>
-
-                         <div  class="mdl-cell mdl-cell--4-col mdl-cell--10-col-tablet mdl-cell--12-col-phone" align ="center">
-                             
-                                  <asp:Button class="mdl-button mdl-js-button mdl-button--accent" ID="Button16" runat="server" Text="รายละเอียด" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ID="Button17" runat="server" Text="อนุมัติ" />
-                                    <asp:Button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="Button18" runat="server" Text="ไม่อนุมัติ" />
-                         
-                         </div>
-                         </div>
-                </asp:Panel>
+                 <asp:Table ID="request_view_table" runat="server" width="100%" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">
+                      
+                   </asp:Table>
+                    
                             <!-- button-->
                      <div class="mdl-grid" >
                        
@@ -244,7 +100,11 @@
                     <div style="padding:0.1vw;background-color:#FF9800">
                                     
                              <h5 class="font-thai">โปรเจคในความรับผิดชอบ</h5>
+                         
                         </div>
+                     <asp:Table ID="teaher_project_table" runat="server" width="100%" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable" >
+                      
+                          </asp:Table>
               </div>
              </div>
    
@@ -261,25 +121,101 @@
           
              <div  class="mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet mdl-cell--12-col-phone white-shadow" align="center">
                  <div style="padding:0.1vw;background-color:#FF9800">
-                             <h5 class="font-thai">Activity</h5>
+                             <h4 class="font-thai">Activity</h4>
                       </div>
-
-                 <input  class="mdl-slider mdl-js-slider" type="range"
-  min="0" max="100" value="25" tabindex="0"/>
+                <br/>
+                
+               <div class="mdl-grid">
+                   <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet"></div>
+                     <div class="mdl-cell mdl-cell--7-col mdl-cell--8-col-tablet">
+                                       <!-- Default Slider -->
+                         <button class="mdl-button mdl-js-button mdl-button--primary" >
+                              ดำนำเนินการไปแล้ว :<%= progressbar %>  %
+                            </button>
+                        <input class="mdl-slider mdl-js-slider" disabled type="range"
+                          min="0" max="100" value='<%= progressbar %>' tabindex="0">
+                       
+                     </div>
+                   </div>
                  <div class="mdl-grid">
-                      <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet">CPE01</div>
-                      <div class="mdl-cell mdl-cell--2-col mdl-cell--6-col-tablet">CPE02</div>
-                      <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-phone">CPE03</div>
-                     <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet">CPE04</div>
-                      <div class="mdl-cell mdl-cell--2-col mdl-cell--6-col-tablet">CPE05</div>
-                      <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-phone">CPE06</div>
+                     <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet"></div>
+                      <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
+                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                          CPE01
+                        </button>
+
+                      </div>
+                     <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
+                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                          CPE02
+                        </button>
+
+                      </div>
+                     <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
+                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                          CPE03
+                        </button>
+
+                      </div>
+                     <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
+                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                          CPE04
+                        </button>
+
+                      </div>
+                     <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
+                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                          CPE05
+                        </button>
+
+                      </div>
+                     <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
+                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                          CPE06
+                        </button>
+
+                      </div>
+                     <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
+                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                          CPE07
+                        </button>
+
+                      </div>
                     </div>
+                    <div class="mdl-grid">
+                           <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+                        <iframe width="450" height="260" style="border: 1px solid #cccccc;" 
+                               src="http://api.thingspeak.com/channels/63852/charts/1?width=450&height=260&yaxismax=100&yaxismin=0&max=240&min=0&results=60&dynamic=true&yaxis=%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%84%E0%B8%B7%E0%B8%9A%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%20%5B%20%25%20%5D&xaxis=%E0%B8%A3%E0%B8%B0%E0%B8%A2%E0%B8%B0%E0%B9%80%E0%B8%A7%E0%B8%A5%E0%B8%B2%20%5B%20%E0%B8%A7%E0%B8%B1%E0%B8%99%20%5D&title=%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%87%E0%B8%B2%E0%B8%99" >
+
+                          </iframe>
+                               </div>
+                         <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+                       <div class="mdl-grid">
+
+                           <div style="border:1px solid #D7CCC8" class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
+                                             <h3>ยินดีต้อนรับ</h3>
+                           </div>
+                           <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
+                               <div class="mdl-grid">
+                                           <div style="border:1px solid #D7CCC8" class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
+                                           <h4>  <%=  Session["first_name"]%> <%=  Session["last_name"]%></h4>
+                                        </div>
+                                   
+                                   </div>
+                           </div>
+                       
+                        
+                        </div>
+
+                             </div>
+                        </div>
+                        
               </div>
                <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-phone  white-shadow" align ="center">
                      <div style="padding:0.1vw;background-color:#FF9800">
-                             <h5 class="font-thai">Recent Logs</h5>
+                             <h4 class="font-thai">Recent Logs</h4>
                       </div>
-                   <asp:Table ID="Table1" runat="server" width="100%" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable" onLoad="addLogs">
+                   <asp:Table ID="student_logs_table" runat="server" width="100%" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable" >
                       
                    </asp:Table>
                   
