@@ -57,6 +57,20 @@ namespace ServerComputerProject
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "teacherSync_project?person_id={person_id}&type_person={type_person}")]
         string teacherSync_project(string person_id, int type_person);
 
+
+        //sync_form_three
+
+      //  [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "sync_form_three?person_id={person_id}")]
+      //  string teacherSync_project(string person_id);
+
+        //--http://localhost:55713/ServiceSave.svc/send_form_three?person_id=55367854&project_scrop=text&send_approve=false //true -> send to approve //false -> save only.
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "send_form_three?person_id={person_id}&project_scrop={project_scrop}&send_approve={send_approve}")]
+        string send_form_three(string person_id,string project_scrop, bool send_approve);
+
+        //--http://localhost:55713/ServiceSave.svc/get_committee?project_id=55367854&type_person=text
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "get_committee?project_id={project_id}&type_person={type_person}")]
+        string get_committee(string project_id, int type_person);
+
             /*
         //--http://localhost:55713/ServiceSave.svc/getRequest?pers=T0000013
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getRequest?person_id={person_id}")]

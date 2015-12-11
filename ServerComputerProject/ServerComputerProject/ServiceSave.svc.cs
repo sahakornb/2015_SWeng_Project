@@ -64,7 +64,19 @@ namespace ServerComputerProject
             public List<ProjectLogs> Logs { get; set; }
             public int state { get; set; }
         }
-
+        public class ComitteeList
+        {
+            public int code { get; set; }
+            public string msg { get; set; }
+            public List<Committee> commitee { get; set; }
+           
+        }
+        public class Committee
+        {
+            public string title_person { get; set; }
+            public string firstName { get; set; }
+            public string lastName { get; set; }
+        }
         public class ProjectRequest
         {
             public string project_id { get; set; }
@@ -452,7 +464,7 @@ namespace ServerComputerProject
         //complete
         public string approveProject(string project_temp, string state, string status)
         {
-            //updateState(project, state, status);
+            updateState(project_temp, state, status);
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
             con.Open();
@@ -978,6 +990,139 @@ namespace ServerComputerProject
                 con.Close();
             }
             return JsonConvert.SerializeObject(r); 
+        }
+
+       /* public string sync_form_three(string person_id)
+        {
+            getNameProject(person_id);
+
+        }*/
+
+
+        public string send_form_three(string person_id, string project_scrop, bool send_approve)
+        {
+            ResponseMsg r = new ResponseMsg();
+            
+            try
+            {
+                project_id = getProjectID(person_id);
+                string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+                SqlConnection con = new SqlConnection(constr);
+                con.Open();
+
+                string send = "";
+                send = "UPDATE project SET Scope='" + project_scrop + "'";
+                send += "WHERE ProjID ='" + getProjectID(person_id) + "'";
+
+                SqlCommand cmdUpdate = new SqlCommand(send, con);
+                cmdUpdate.ExecuteNonQuery();
+
+                
+
+                if (send_approve)
+                {
+                    updateState(getProjectID(person_id), "3", "2");
+
+                    
+
+                    //con.Open();
+
+                    string sqlRequest = "";
+
+                    sqlRequest = "SET IDENTITY_INSERT Request_Title ON ";
+                    sqlRequest += "INSERT INTO Request_Title (Req_TitleiD,ReqID,ProjID,ApplicantID,AcceptanceID,Date) ";
+                    sqlRequest += "VALUES ( '" + getID("Req_TitleiD", "Request_Title") + "','3','" + project_id + "','" + person_id + "','" + getAdviser() + "', GETDATE())";
+                    SqlCommand cmdInsert = new SqlCommand(sqlRequest, con);
+                    cmdInsert.ExecuteNonQuery();
+                    r.code = 0;
+                    r.msg = "Insert";
+                    r.value = "";
+
+                }
+                else
+                {
+                    updateState(person_id, "3", "1");
+                    r.code = 0;
+                    r.msg = "OK";
+                    r.value = "";
+                }
+            }
+            catch
+            {
+                r.code = 9;
+                r.msg = "Database Error";
+                r.value = "";
+            }
+
+            return JsonConvert.SerializeObject(r); 
+        }
+
+        public string get_committee(string project_id, int type_person)
+        {
+            ComitteeList c = new ComitteeList();
+            Committee stg = new Committee();
+            c.commitee = new List<Committee>();
+            string pers_id = "";
+            try
+            {
+                string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+                SqlConnection con = new SqlConnection(constr);
+                con.Open();
+
+                string sqlproject = "SELECT PersID FROM Relation WHERE Status_ID = '3' AND ProjID='" + project_id + "'";
+
+                SqlCommand qrproject = new SqlCommand(sqlproject, con);
+                SqlDataReader reader = qrproject.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    pers_id = reader["PersID"].ToString();
+                }
+                reader.Close();
+                con.Close();
+
+            }
+            catch
+            {
+                c.code = 1;
+                c.msg = "Error";
+                return JsonConvert.SerializeObject(c);
+            }
+
+            try
+            {
+                string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+                SqlConnection con = new SqlConnection(constr);
+                con.Open();
+
+                string sqlproject = "SELECT Title, Fname, Lname FROM person WHERE PersID='" + pers_id + "'";
+
+                SqlCommand qrproject = new SqlCommand(sqlproject, con);
+                SqlDataReader reader = qrproject.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    stg = new Committee();
+                    stg.title_person = reader["Title"].ToString();
+                    stg.firstName = reader["Fname"].ToString();
+                    stg.lastName = reader["Lname"].ToString();
+                    c.commitee.Add(stg);
+                }
+                reader.Close();
+                con.Close();
+
+                c.code = 0;
+                c.msg = "OK";
+
+                return JsonConvert.SerializeObject(c);
+            }
+            catch
+            {
+                c.code = 1;
+                c.msg = "Error";
+                return JsonConvert.SerializeObject(c);
+            }  
+            
         }
     }
 }

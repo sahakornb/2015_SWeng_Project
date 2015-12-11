@@ -56,7 +56,16 @@
         <form runat ="server" id="form1">
            <asp:Panel ID="teacher_panel" runat="server">
          <div class="mdl-grid">
-          
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-phone  white-shadow" align ="center">
+                    <div style="padding:0.1vw;background-color:#FF9800">
+                                    
+                             <h3 class="font-thai font-1d8 white_color">โปรเจคในความรับผิดชอบ</h3>
+                         
+                        </div>
+                     <asp:Table ID="teaher_project_table" runat="server" width="100%" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable" >
+                      
+                          </asp:Table>
+              </div>
              <div  class="mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet mdl-cell--12-col-phone white-shadow" align="center">
                  
                    <div class="mdl-grid">
@@ -96,16 +105,7 @@
                          </div>
 
               </div>
-               <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-phone  white-shadow" align ="center">
-                    <div style="padding:0.1vw;background-color:#FF9800">
-                                    
-                             <h5 class="font-thai">โปรเจคในความรับผิดชอบ</h5>
-                         
-                        </div>
-                     <asp:Table ID="teaher_project_table" runat="server" width="100%" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable" >
-                      
-                          </asp:Table>
-              </div>
+       
              </div>
    
             </asp:Panel>
@@ -118,43 +118,48 @@
              <!-- START STUDENT PANEL  -->
            <asp:Panel ID="student_panel" runat="server">
          <div class="mdl-grid">
-          
+                         <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-phone  white-shadow" align ="center">
+                     <div style="padding:0.1vw;background-color:#FF9800">
+                             <h4 class="white_color font-thai font-2d0">Recent Logs</h4>
+                      </div>
+                   <asp:Table ID="student_logs_table" runat="server" width="100%" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable" >
+                      
+                   </asp:Table>
+                  
+              </div>
              <div  class="mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet mdl-cell--12-col-phone white-shadow" align="center">
                  <div style="padding:0.1vw;background-color:#FF9800">
-                             <h4 class="font-thai">Activity</h4>
+                             <h4 class=" white_color font-thai font-2d0">Activity</h4>
                       </div>
-                <br/>
-                
                <div class="mdl-grid">
-                   <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet"></div>
-                     <div class="mdl-cell mdl-cell--7-col mdl-cell--8-col-tablet">
+                   <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
+                           <div class="mdl-grid">
+                                             <h4 class=" font-thai font-2d0">ยินดีต้อนรับ : <u>คุณ<%=  Session["first_name"]%> <%=  Session["last_name"]%></u></h4>
+                            </div>
+                   </div>
+                    <div class="mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet"></div>
+                     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
                                        <!-- Default Slider -->
                          <button class="mdl-button mdl-js-button mdl-button--primary" >
-                              ดำนำเนินการไปแล้ว :<%= progressbar %>  %
+                             <p class=" font-thai font-2d0" > ดำเนินการไปแล้ว :<%= progressbar %>  %</p>
                             </button>
-                        <input class="mdl-slider mdl-js-slider" disabled type="range"
-                          min="0" max="100" value='<%= progressbar %>' tabindex="0">
                        
                      </div>
                    </div>
-                 <div class="mdl-grid">
+                 <div class="mdl-grid ">
                      <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet"></div>
+                      
                       <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
-                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                          CPE01
-                        </button>
+                          <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  href="FormCPE01.aspx">CPE01</a>
+                        
 
                       </div>
                      <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
-                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                          CPE02
-                        </button>
+                          <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  href="FormCPE02.aspx">CPE02</a>
 
                       </div>
                      <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
-                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                          CPE03
-                        </button>
+                         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  href="FormCPE03.aspx">CPE03</a>
 
                       </div>
                      <div class="mdl-cell mdl-cell--1-col mdl-cell--8-col-tablet">
@@ -182,44 +187,20 @@
 
                       </div>
                     </div>
+
                     <div class="mdl-grid">
-                           <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-                        <iframe width="450" height="260" style="border: 1px solid #cccccc;" 
-                               src="http://api.thingspeak.com/channels/63852/charts/1?width=450&height=260&yaxismax=100&yaxismin=0&max=240&min=0&results=60&dynamic=true&yaxis=%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%84%E0%B8%B7%E0%B8%9A%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%20%5B%20%25%20%5D&xaxis=%E0%B8%A3%E0%B8%B0%E0%B8%A2%E0%B8%B0%E0%B9%80%E0%B8%A7%E0%B8%A5%E0%B8%B2%20%5B%20%E0%B8%A7%E0%B8%B1%E0%B8%99%20%5D&title=%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%87%E0%B8%B2%E0%B8%99" >
+                           <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet"></div>
 
-                          </iframe>
+                            <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet">
+                       <iframe width="760" height="360" style="border: 3px solid #cccccc;" src="http://api.thingspeak.com/channels/63852/charts/1?width=760&height=360&yaxismax=100&yaxismin=0&max=240&min=0&results=60&dynamic=true&yaxis=%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%84%E0%B8%B7%E0%B8%9A%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%20%5B%20%25%20%5D&xaxis=%E0%B8%A3%E0%B8%B0%E0%B8%A2%E0%B8%B0%E0%B9%80%E0%B8%A7%E0%B8%A5%E0%B8%B2%20&title=%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%AD%E0%B8%81%E0%B8%AA%E0%B8%B2%E0%B8%A3" ></iframe>
                                </div>
-                         <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-                       <div class="mdl-grid">
-
-                           <div style="border:1px solid #D7CCC8" class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-                                             <h3>ยินดีต้อนรับ</h3>
-                           </div>
-                           <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-                               <div class="mdl-grid">
-                                           <div style="border:1px solid #D7CCC8" class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-                                           <h4>  <%=  Session["first_name"]%> <%=  Session["last_name"]%></h4>
-                                        </div>
                                    
-                                   </div>
-                           </div>
                        
-                        
-                        </div>
 
-                             </div>
                         </div>
                         
               </div>
-               <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-phone  white-shadow" align ="center">
-                     <div style="padding:0.1vw;background-color:#FF9800">
-                             <h4 class="font-thai">Recent Logs</h4>
-                      </div>
-                   <asp:Table ID="student_logs_table" runat="server" width="100%" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable" >
-                      
-                   </asp:Table>
-                  
-              </div>
+
              </div>
    
             </asp:Panel>

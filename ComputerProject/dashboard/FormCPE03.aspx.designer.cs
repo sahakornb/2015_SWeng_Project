@@ -10,7 +10,7 @@
 namespace ComputerProject.dashboard {
     
     
-    public partial class index {
+    public partial class FormCPE03 {
         
         /// <summary>
         /// form1 control.
@@ -22,93 +22,57 @@ namespace ComputerProject.dashboard {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// teacher_panel control.
+        /// problem_scrope control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel teacher_panel;
+        protected global::System.Web.UI.WebControls.TextBox problem_scrope;
         
         /// <summary>
-        /// teaher_project_table control.
+        /// student_member control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table teaher_project_table;
+        protected global::System.Web.UI.WebControls.Table student_member;
         
         /// <summary>
-        /// id_project control.
+        /// Teacher control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label id_project;
+        protected global::System.Web.UI.WebControls.Table Teacher;
         
         /// <summary>
-        /// Label2 control.
+        /// save control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Button save;
         
         /// <summary>
-        /// name_project control.
+        /// save_send control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label name_project;
+        protected global::System.Web.UI.WebControls.Button save_send;
         
         /// <summary>
-        /// request_view_table control.
+        /// cancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table request_view_table;
-        
-        /// <summary>
-        /// Button20 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button20;
-        
-        /// <summary>
-        /// Button21 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button21;
-        
-        /// <summary>
-        /// student_panel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel student_panel;
-        
-        /// <summary>
-        /// student_logs_table control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table student_logs_table;
+        protected global::System.Web.UI.WebControls.Button cancel;
     }
 }

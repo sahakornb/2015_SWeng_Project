@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dashboard\clear.aspx" />
+    <Content Include="dashboard\FormCPE03.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\THSarabunNew Bold.ttf" />
     <Content Include="fonts\THSarabunNew BoldItalic.ttf" />
@@ -140,6 +141,13 @@
     </Compile>
     <Compile Include="dashboard\FormCPE02.aspx.designer.cs">
       <DependentUpon>FormCPE02.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard\FormCPE03.aspx.cs">
+      <DependentUpon>FormCPE03.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\FormCPE03.aspx.designer.cs">
+      <DependentUpon>FormCPE03.aspx</DependentUpon>
     </Compile>
     <Compile Include="dashboard\main.aspx.cs">
       <DependentUpon>main.aspx</DependentUpon>

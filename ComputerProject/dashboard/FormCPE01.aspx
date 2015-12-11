@@ -63,6 +63,7 @@
      </div> 
           <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--12-col-phone"></div>
+
           <div style="padding:1vw" class="mdl-cell mdl-cell--8-col mdl-cell--10-col-tablet mdl-cell--8-col-phone white-shadow">
               <!-- Simple Textfield -->
                 <form id="form1" runat="server" >
@@ -87,7 +88,7 @@
                            
                                 <div class="mdl-textfield mdl-js-textfield">
                              <asp:TextBox  class="mdl-textfield__input" type="text" id="name_en"  runat="server"></asp:TextBox>
-                              <label class="mdl-textfield__label" for="name_en">กรอกชื่อโครางงานภาษาอังกฤษ</label>
+                              <label class="mdl-textfield__label" for="name_en">กรอกชื่อโครงงานภาษาอังกฤษ</label>
                                    
                            </div>
                          </div>

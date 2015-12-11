@@ -31,11 +31,11 @@ namespace ComputerProject.dashboard
         public void getProject()
         {
             //--http://localhost:55713/ServiceSave.svc/getProject?pers=55367854
-            string jsonRecieveMes = getServiceResult("http://localhost:55713/ServiceSave.svc/getProject?pers=" + Session["userID"].ToString() );
+            string jsonRecieveMes = getServiceResult("http://localhost:55713/ServiceSave.svc/getProject_sync?person_id=" + Session["userID"].ToString());
             dynamic _jsonRecieveMes = JsonConvert.DeserializeObject(jsonRecieveMes);
             dynamic _jsonRecieveMes2 = JsonConvert.DeserializeObject<Project>(_jsonRecieveMes);
 
-            
+
             if (_jsonRecieveMes2.code == 0)
             {
                 id_project.Text = _jsonRecieveMes2.projectID;
@@ -51,7 +51,14 @@ namespace ComputerProject.dashboard
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            getProject();
+            if (Session["userID"] != null)
+            {
+                getProject();
+            }
+            else
+            {
+                Response.Redirect("http://localhost:54520/website/Login.aspx");
+            }
 
         }
         protected void getCalendar(object sender, EventArgs e)
